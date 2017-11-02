@@ -27,8 +27,13 @@ namespace ZF_Features;
 
 use ZF_Features\Admin;
 
+defined( 'ABSPATH' ) || die();
+
 // Composer autoloader.
 require_once __DIR__ . '/vendor/autoload.php';
+
+// Load theme functions.
+require_once __DIR__ . '/theme-functions.php';
 
 /**
  * Loads the plugin config.
