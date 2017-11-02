@@ -1,0 +1,35 @@
+{
+	"name": "zeelandfamily/zf-features",
+	"type": "wordpress-plugin",
+	"license": "GPLv3",
+	"description": "Starter plugin to be used as a project features plugin",
+	"version": "1.0",
+	"homepage": "https://github.com/ZeelandFamily",
+	"authors": [
+		{
+			"name": "Marco Martins / Zeeland Family",
+			"email": "marco.martins@zeelandfamily.fi",
+			"homepage": "https://github.com/ZeelandFamily"
+		}
+	],
+	"keywords": [
+		"wordpress"
+	],
+	"require": {
+		"composer/installers": "~1.0",
+		"webdevstudios/cmb2": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"ZF_Features\\": ""
+		},
+		"files": [
+			"vendor/webdevstudios/cmb2/init.php"
+		]
+	},
+	"extra": {
+		"installer-paths": {
+			"vendor/webdevstudios/cmb2": ["webdevstudios/cmb2"]
+		}
+	}
+}
