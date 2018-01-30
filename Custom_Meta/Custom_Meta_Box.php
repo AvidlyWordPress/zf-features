@@ -48,9 +48,6 @@ abstract class Custom_Meta_Box {
 	/**
 	 * Creates a custom metabox.
 	 *
-	 * @param array $object_types Post types or object types (term, user, comment, options-page) in which the custom metabox should
-	 *                          be displayed.
-	 * @param array $taxonomies Taxonomies in which the metabox should be displayed, if object type is 'term'
 	 * @return Object Custom metabox object.
 	 */
 	abstract protected function create();

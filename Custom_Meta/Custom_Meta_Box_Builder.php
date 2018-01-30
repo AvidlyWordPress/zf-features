@@ -9,6 +9,8 @@ class Custom_Meta_Box_Builder {
 	 * @param  string $id           Custom meta box identifier.
 	 * @param  string $name         Custom meta box name.
 	 * @param  string $field_prefix Field prefix.
+	 * @param  array  $object_types Object types for this meta box.
+	 * @param  array  $taxonomies   Taxonomies for this meta box (used if object type is 'term')
 	 * @return object The custom meta object that was built.
 	 */
 	public function build( string $id, string $name, string $field_prefix = '', array $object_types = [], array $taxonomies = [] ) {

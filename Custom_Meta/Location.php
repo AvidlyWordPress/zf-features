@@ -9,9 +9,6 @@ class Location extends Custom_Meta_Box {
 	/**
 	 * Creates the Location metabox.
 	 *
-	 * @param array $object_types Object types in which the Location metabox should
-	 *                          be displayed.
-	 * @param array $taxonomies Taxonomies in which the metabox should be displayed, if object type is 'term'
 	 * @return Location Metabox object.
 	 */
 	public function create() {
