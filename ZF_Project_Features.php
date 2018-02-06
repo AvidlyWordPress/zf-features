@@ -185,13 +185,29 @@ class ZF_Project_Features {
 			$prefixed_id = $this->slug_prefix . '-' . $id;
 
 			// Get the post type definitions based on the config data.
-			$post_types = array_filter(
+			$object_types = array_filter(
 				array_map( function( $item ) {
+					// First check for one of the non-post-type object types.
+					if ( in_array( $item, [ 'term', 'user', 'comment', 'options-page' ] ) ) {
+						return $item;
+					}
+					// It must be a post type. Check it exists.
 					if ( ! post_type_exists( $this->slug_prefix . '_' . $item ) && ! post_type_exists( $item ) ) {
 						return false;
 					}
 					return ( array_key_exists( $item, $this->post_types ) ) ? $this->post_types[ $item ] : $item;
-				}, $params['post_types'] )
+				}, (array) $params['object_types'] )
+			);
+
+			// Look for taxonomies. 
+			$taxonomy_candidates = array_key_exists( 'taxonomies', $params ) ? (array) $params['taxonomies'] : [];
+			$taxonomies = array_filter(
+				array_map( function( $item ) {
+					if ( ! taxonomy_exists( $this->slug_prefix . '_' . $item ) && ! taxonomy_exists( $item ) ) {
+						return false;
+					}
+					return ( array_key_exists( $item, $this->taxonomies ) ) ? $this->slug_prefix . '_' . $item : $item;
+				}, $taxonomy_candidates )
 			);
 
 			// By default the custom meta fields are not displayed in the
@@ -203,14 +219,17 @@ class ZF_Project_Features {
 				$field_prefix = $this->slug_prefix;
 			}
 
-			$metabox = $zf_cmb_builder->build( $prefixed_id, $params['name'], $field_prefix );
+			// Build a metabox object.
+			$metabox = $zf_cmb_builder->build( $prefixed_id, $params['name'], $field_prefix, $object_types, $taxonomies );
 
 			if ( is_wp_error( $metabox ) ) {
 				$this->errors[] = $metabox;
 				continue;
 			}
 
-			$this->cmb[ $id ]['post_types'] = $metabox->create( $post_types );
+			// Create the actual metabox.
+			$this->cmb[ $id ]['object_types'] = $metabox->create();
+
 		}
 	}
 

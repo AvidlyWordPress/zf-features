@@ -1,4 +1,7 @@
 <?php
+/**
+ * An example metabox.
+ */
 namespace ZF_Features\Custom_Meta;
 
 class Location extends Custom_Meta_Box {
@@ -6,17 +9,16 @@ class Location extends Custom_Meta_Box {
 	/**
 	 * Creates the Location metabox.
 	 *
-	 * @param array $post_types Post types in which the Location metabox should
-	 *                          be displayed.
 	 * @return Location Metabox object.
 	 */
-	public function create( array $post_types = array() ) {
+	public function create() {
 
 		// Initiate the metabox.
 		$this->metabox = new \CMB2( array(
-			'id'           => $this->id,
+			'id'           => $this->id, // set via app-config.php
 			'title'        => __( 'Location', 'zf-features' ),
-			'object_types' => [],
+			'object_types' => $this->object_types, // set via app-config.php
+			'taxonomies'   => $this->taxonomies, // set via app-config.php
 			'context'      => 'normal',
 			'priority'     => 'high',
 			'show_names'   => true, // Show field names on the left
@@ -35,8 +37,6 @@ class Location extends Custom_Meta_Box {
 			'id'         => $this->field_prefix . 'lng',
 			'type'       => 'text',
 		) );
-
-		$this->set_object_types( $this->metabox, $post_types );
 
 		return $this;
 	}

@@ -19,9 +19,10 @@ return [
 	// Custom meta boxes.
 	'cmb' => [
 		'location' => [
-			'name'       => 'Location',
-			'post_types' => [ 'thing' ],
-		],
+			'name'         => 'Location',
+			'object_types' => [ 'thing' ], // an array of post types, or 'term', 'comment', 'user', 'options-page'
+			// 'taxonomies' => [ 'taxonomy_name' ] // if object_type is 'term', specify taxonomies
+		]
 	],
 	// Views.
 	'views' => [
