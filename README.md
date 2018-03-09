@@ -43,7 +43,13 @@ TODO: add documentation
 
 ## Mail templates
 
-TODO: add documentation
+* Structure of Main_Template.php
+Main_Template.php controls emails sending functions. 
+wp_mail function is used for sending emails
+
+* Adding Custom Email templates
+There is an example Test_Template.php to be used as a starting point what contains
+
 
 ## Views
 
