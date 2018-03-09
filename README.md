@@ -43,13 +43,12 @@ TODO: add documentation
 
 ## Mail templates
 
-* Structure of Main_Template.php
-Main_Template.php controls emails sending functions. 
-wp_mail function is used for sending emails
-
 * Adding Custom Email templates
-There is an example Test_Template.php to be used as a starting point what contains
+There is an example Test_Template.php to be used as a starting point.
+To create a new email template copy a `Test_Template.php` and name it accordingly.
+Remember to update class name also. Make necessary changes to `subject` and `message` parameters.
 
+* wp_mail function is used for sending emails
 
 ## Views
 
