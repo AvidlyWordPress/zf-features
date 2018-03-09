@@ -52,4 +52,15 @@ Remember to update class name also. Make necessary changes to `subject` and `mes
 
 ## Views
 
-TODO: add documentation
+To create a view, first create a new file in `Views/`, e.g. `Views/Front.php`, then add a corresponding line in `app-config.php` under views, so with the previous example it should look like this:
+
+	'views' => [
+		'front'  => 'Front',
+	],
+
+The `Views/Front.php` file requires two methods, `get_data` and `load_condition`.
+
+* `get_data` is the method that will fetch the data needed into that view.
+* `load_condition` is the method that checks if the data should be loaded or not.
+
+If the condition within `load_condition` is matched then the data from `get_data` is loaded into the `WP_Query` object.
