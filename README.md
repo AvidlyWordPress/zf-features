@@ -33,9 +33,15 @@ Each meta box should have its own class file inside `Custom_Meta/`. See example 
 
 After creating the file, add the meta box to `app-config.php`
 
-## Ajax
+## Adding Ajax requests
 
-TODO: add documentation
+To create a new Ajax request, first create a new file in `Ajax/`, e.g. `Ajax/Dishwashing.php`, then add a corresponding line in `app-config.php` under `ajax`, so with the previous example it should look like this
+
+	'ajax' => [
+		'dishwashing'  => 'Dishwashing',
+	],
+
+There is an example Ajax request Random which you can copy and use as a starting point.
 
 ## Admin 
 
