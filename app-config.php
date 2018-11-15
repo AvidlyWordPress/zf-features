@@ -24,6 +24,21 @@ return [
 			// 'taxonomies' => [ 'taxonomy_name' ] // if object_type is 'term', specify taxonomies
 		]
 	],
+	// ACF field groups.
+	'acf' => [
+		'person' => [
+			'name' 	 	=> 'Person',
+			'location'	=> [
+				[
+					[
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'post',
+					],
+				],
+			],
+		],
+	],
 	// Views.
 	'views' => [
 		'front' => 'Front',

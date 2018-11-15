@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Zeeland Family Features
+Plugin Name: ZF Features
 Plugin URI: http://zeelandfamily.fi
 Description: Define Custom post types, taxonomies and fields for project
 Version: 1.0
@@ -85,6 +85,8 @@ function zf_load_features() {
 
 	// Register the meta boxes (uses CMB2).
 	add_action( 'cmb2_admin_init', [ $zf_features, 'register_meta_boxes' ] );
+
+	add_action( 'acf/init', [ $zf_features, 'register_acf_fields' ] );
 
 	/*
 	// Customize admin menus.

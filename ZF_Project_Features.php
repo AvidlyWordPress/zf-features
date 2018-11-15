@@ -5,6 +5,7 @@ use ZF_Features\Post_Types;
 use ZF_Features\Taxonomies;
 use ZF_Features\Custom_Meta;
 use ZF_Features\Ajax;
+use ZF_Features\ACF;
 
 class ZF_Project_Features {
 
@@ -279,6 +280,18 @@ class ZF_Project_Features {
 		}
 
 		return $posts;
+	}
+
+	function register_acf_fields() {
+		if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+			return;
+		}
+		$zf_acf_builder = new ACF\ACF_Builder();
+		foreach ( (array) $this->config->property( 'acf' ) as $id => $params ) {
+			$field_group = $zf_acf_builder->build( $id, $params['name'], $this->slug_prefix, $params['location'] );
+			\acf_add_local_field_group( $field_group->settings );
+		}
+
 	}
 
 }
